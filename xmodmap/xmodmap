@@ -1,0 +1,11 @@
+!switch \| `~
+keycode 0x31 = backslash bar backslash bar
+keycode 0x33 = grave asciitilde grave asciitilde
+
+!switch Super_L Alt_L
+clear mod1
+clear mod4
+keycode 0x85 = Alt_L Meta_L Alt_L Meta_L
+keycode 0x40 = Super_L NoSymbol Super_L
+add mod1 = Alt_L Alt_R Meta_L
+add mod4 = Super_L Super_R Super_L Hyper_L
