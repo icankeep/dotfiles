@@ -1,0 +1,15 @@
+[include]
+	path = ~/.gitconfig.d/gitconfig
+[core]
+	pager = less -F -X -R
+	editor = /usr/bin/vim
+[alias]
+	s = status -sb
+[merge]
+	tool = diffconflicts
+[mergetool "diffconflicts"]
+	cmd = 'diffconflicts vim '
+	trustExitCode = true
+	keepBackup = false
+[gc]
+	autoDetach = false
