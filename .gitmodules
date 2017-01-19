@@ -4,3 +4,6 @@
 [submodule "git/sixarm_git_gitconfig"]
 	path = git/.gitconfig.d
 	url = https://github.com/SixArm/sixarm_git_gitconfig
+[submodule "zsh/oh-my-zsh"]
+	path = zsh/.oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh

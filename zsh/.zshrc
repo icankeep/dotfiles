@@ -1,3 +1,9 @@
+if [ -f "$HOME/.zshrc.pre" ]; then
+  source "$HOME/.zshrc.pre"
+fi
+
+export DOTFILES_PATH=$(cd "$(dirname $(readlink ~/.zshrc))" && git rev-parse --show-toplevel)
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -80,9 +86,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export DOTFILES_PATH=$(cd "$(dirname $(readlink ~/.zshrc))" && git rev-parse --show-toplevel)
+#################### ALIASES ######################
+alias ls="ls -G --color=auto -F"
+alias stow="stow -v"
 
 source "$DOTFILES_PATH/shell/dircolors/base16-ocean.sh"
 source "$DOTFILES_PATH/shell/liquidprompt/liquidprompt"
+
+if [ -f "$HOME/.zshrc.post" ]; then
+  source "$HOME/.zshrc.post"
+fi
 
 if [ "$TMUX" = "" ]; then tmux -2; fi
