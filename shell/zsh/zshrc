@@ -80,7 +80,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export DOTFILES_PATH=$(cd "$(dirname $(readlink ~/.zshrc))/../.." && pwd -P)
+export DOTFILES_PATH=$(cd "$(dirname $(readlink ~/.zshrc))" && git rev-parse --show-toplevel)
 
 source "$DOTFILES_PATH/shell/dircolors/base16-ocean.sh"
 source "$DOTFILES_PATH/shell/liquidprompt/liquidprompt"
