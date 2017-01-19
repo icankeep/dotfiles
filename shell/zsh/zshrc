@@ -80,6 +80,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/.base16-ocean.sh
+export DOTFILES_PATH=$(cd "$(dirname $(readlink ~/.zshrc))/../.." && pwd -P)
+
+source "$DOTFILES_PATH/shell/dircolors/base16-ocean.sh"
+source "$DOTFILES_PATH/shell/liquidprompt/liquidprompt"
 
 if [ "$TMUX" = "" ]; then tmux -2; fi
