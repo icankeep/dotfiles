@@ -90,6 +90,7 @@ source $ZSH/oh-my-zsh.sh
 #################### ALIASES ######################
 alias ls="ls -G --color=auto -F"
 alias stow="stow -v"
+alias mm="xmodmap ~/.xmodmap"
 
 source "$DOTFILES_PATH/misc/shell/dircolors/base16-ocean.sh"
 source "$DOTFILES_PATH/misc/shell/liquidprompt/liquidprompt"
