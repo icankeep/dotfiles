@@ -2,6 +2,7 @@ if [ -f "$HOME/.zshrc.pre" ]; then
   source "$HOME/.zshrc.pre"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
 export DOTFILES_PATH=$(cd "$(dirname $(readlink ~/.zshrc))" && git rev-parse --show-toplevel)
 
 # Path to your oh-my-zsh installation.
