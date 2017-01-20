@@ -90,8 +90,8 @@ source $ZSH/oh-my-zsh.sh
 alias ls="ls -G --color=auto -F"
 alias stow="stow -v"
 
-source "$DOTFILES_PATH/shell/dircolors/base16-ocean.sh"
-source "$DOTFILES_PATH/shell/liquidprompt/liquidprompt"
+source "$DOTFILES_PATH/misc/shell/dircolors/base16-ocean.sh"
+source "$DOTFILES_PATH/misc/shell/liquidprompt/liquidprompt"
 
 if [ -f "$HOME/.zshrc.post" ]; then
   source "$HOME/.zshrc.post"

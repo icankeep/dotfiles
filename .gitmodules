@@ -1,5 +1,5 @@
 [submodule "shell/liquidprompt"]
-	path = shell/liquidprompt
+	path = misc/shell/liquidprompt
 	url = https://github.com/nojhan/liquidprompt
 [submodule "git/sixarm_git_gitconfig"]
 	path = git/.gitconfig.d

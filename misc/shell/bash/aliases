@@ -72,12 +72,7 @@ alias ctags="ctags --c-kinds=+lpx --fields=+aS --extra=+q"
 alias utf8="export LANG=en_US.UTF-8"
 alias gbk="export LANG=zh_CN.GB18030"
 
-alias sshk="ssh root@192.168.15.244"
-alias sshfsk="sshfs -o sftp_server=/usr/bin/sftp-server root@192.168.15.244:/ /mnt/sshfs"
-
 alias wine32="WINEARCH=win32 wine"
-
-alias goagent="~/opt/goagent/local/proxy.py"
 
 alias tmux='tmux -2'
 
