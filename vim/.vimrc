@@ -502,3 +502,8 @@ let g:SuperTabDefaultCompletionType = '<c-x><c-p>'
 
 " }}}
 
+" Per-Project vim settings {{{
+if filereadable('.vimrc.local')
+  source .vimrc.local
+endif
+" }}}
