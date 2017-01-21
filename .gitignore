@@ -1,4 +1,6 @@
 bin/.local/bin/*
 !bin/.local/bin/git-filter
+
 vim/.vim/*
 !vim/.vim/autoload/plug.vim
+!vim/.vim/rc.d

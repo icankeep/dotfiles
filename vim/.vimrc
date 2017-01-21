@@ -83,12 +83,30 @@ Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'SirVer/ultisnips'
 
 " Allow pane movement to jump out of vim into tmux
 Plug 'christoomey/vim-tmux-navigator'
 
 " Colorscheme
 Plug 'chriskempson/base16-vim'
+
+" For Programming Languages
+Plug 'vim-syntastic/syntastic'
+Plug 'sheerun/vim-polyglot'
+
+" Haskell
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
+Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
+Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+
+" Javascript
+Plug 'flowtype/vim-flow', { 'for': 'javascript' }
+Plug 'moll/vim-node', { 'for': 'javascript' }
+Plug 'ternjs/tern_for_vim', { 'for': 'javascript', 'do': 'npm install' }
 
 call plug#end()
 
@@ -506,4 +524,11 @@ let g:SuperTabDefaultCompletionType = '<c-x><c-p>'
 if filereadable('.vimrc.local')
   source .vimrc.local
 endif
+" }}}
+
+" Per-Language settings {{{
+augroup langRC
+  " fold vimrc itself by categories
+  autocmd FileType javascript source ~/.vim/rc.d/javascript.vimrc
+augroup END
 " }}}
