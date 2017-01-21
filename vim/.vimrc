@@ -230,7 +230,7 @@ set ffs=unix,dos,mac
 " Use large font by default in MacVim
 set gfn=Monaco:h19
 
-let g:airline_theme='simple'
+let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 
 " }}}
