@@ -528,7 +528,7 @@ endif
 
 " Per-Language settings {{{
 augroup langRC
-  " fold vimrc itself by categories
   autocmd FileType javascript source ~/.vim/rc.d/javascript.vimrc
+  autocmd FileType haskell    source ~/.vim/rc.d/haskell.vimrc
 augroup END
 " }}}
