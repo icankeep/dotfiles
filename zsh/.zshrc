@@ -4,6 +4,9 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 export DOTFILES_PATH=$(cd "$(dirname $(readlink -m ~/.zshrc))" && git rev-parse --show-toplevel)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -98,5 +101,5 @@ source "$DOTFILES_PATH/misc/shell/liquidprompt/liquidprompt"
 if [ -f "$HOME/.zshrc.post" ]; then
   source "$HOME/.zshrc.post"
 fi
-
 if [ "$TMUX" = "" ]; then tmux -2; fi
+
