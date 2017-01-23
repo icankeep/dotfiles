@@ -1,0 +1,16 @@
+#!/bin/bash
+
+EMAIL=$(git config user.email)
+
+# I am not alice
+if [ "$EMAIL" = "alice@example.com" ]; then
+  echo ""
+  echo "ERROR: [pre-commit hook] Aborting commit because user.email is alice@example.com"
+  echo "Configure user.name & user.email for this repository by running:"
+  echo ""
+  echo "    $ git config user.email your-name@domain.com"
+  echo "    $ git config user.name your-full-name"
+  echo ""
+  exit 1
+fi
+

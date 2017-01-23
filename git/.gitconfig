@@ -1,3 +1,5 @@
+[init]
+  templatedir = ~/.gittemplates
 [include]
 	path = ~/.gitconfig.d/gitconfig
 [core]
