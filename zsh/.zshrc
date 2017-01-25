@@ -95,8 +95,10 @@ alias ls="ls -G --color=auto -F"
 alias stow="stow -v"
 alias mm="xmodmap ~/.xmodmap"
 
-source "$DOTFILES_PATH/misc/shell/dircolors/base16-ocean.sh"
-source "$DOTFILES_PATH/misc/shell/liquidprompt/liquidprompt"
+BASE16_SHELL="$DOTFILES_PATH/misc/shell/base16-shell/"
+LIQUID_PROMPT="$DOTFILES_PATH/misc/shell/liquidprompt/"
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+[ -n "$PS1" ] && [ -s "$LIQUID_PROMPT/liquidprompt" ] && source "$LIQUID_PROMPT/liquidprompt"
 
 if [ -f "$HOME/.zshrc.post" ]; then
   source "$HOME/.zshrc.post"

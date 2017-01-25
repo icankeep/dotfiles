@@ -4,3 +4,5 @@ bin/.local/bin/*
 vim/.vim/*
 !vim/.vim/autoload/plug.vim
 !vim/.vim/rc.d
+
+.DS_Store

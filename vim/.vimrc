@@ -189,8 +189,10 @@ set mouse=a
 
 " Colors and Fonts {{{
 
-let base16colorspace=256
-colorscheme base16-ocean
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " Adjust signscolumn to match wombat
 hi! link SignColumn LineNr
