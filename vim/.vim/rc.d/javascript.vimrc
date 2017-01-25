@@ -4,3 +4,7 @@
 let g:syntastic_javascript_checkers = ['eslint', 'flow']
 let g:syntastic_javascript_flow_exe = 'flow'
 
+set shiftwidth=4
+set tabstop=4
+
+
