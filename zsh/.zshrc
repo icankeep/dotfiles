@@ -103,5 +103,8 @@ LIQUID_PROMPT="$DOTFILES_PATH/misc/shell/liquidprompt/"
 if [ -f "$HOME/.zshrc.post" ]; then
   source "$HOME/.zshrc.post"
 fi
-if [ "$TMUX" = "" ]; then tmux -2; fi
+
+if [ "$TMUX" = "" ]; then
+    tmux -2;
+fi
 
