@@ -94,6 +94,7 @@ source $ZSH/oh-my-zsh.sh
 alias ls="ls -G --color=auto -F"
 alias stow="stow -v"
 alias mm="xmodmap ~/.xmodmap"
+alias git_root="cd $(git rev-parse --show-toplevel)"
 
 BASE16_SHELL="$DOTFILES_PATH/misc/shell/base16-shell/"
 LIQUID_PROMPT="$DOTFILES_PATH/misc/shell/liquidprompt/"
