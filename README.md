@@ -19,6 +19,8 @@
  bin            > custom scripts
  fonts          > configs for fira and powerlinesymbols
  git            > global git config and aliases
+ ghci           > haskell REPL config
+ ssh            > ssh_config
  previews       > screenshots
  tmux           > terminal multiplexer with themes and key bindings
  vim            > IDE like config for vim, enhanced for javascript and haskell
