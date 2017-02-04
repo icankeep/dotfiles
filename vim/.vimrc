@@ -256,6 +256,9 @@ let g:ctrlp_max_files=0
 let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
 
+" Force saving files that require root permission
+cnoremap w!! w !sudo tee > /dev/null %
+
 " }}}
 
 " Text, tab and indent related {{{
