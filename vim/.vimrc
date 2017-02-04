@@ -212,6 +212,10 @@ set guicursor+=n-v-c:blinkon0
 
 " Set extra options when running in GUI mode
 if has("gui_running")
+  set guifont=Fira\ Mono\ 11
+  set guioptions-=m
+  set guioptions-=r
+  set guioptions-=L
   set guioptions-=T
   set guioptions-=e
   set guitablabel=%M\ %t
@@ -229,11 +233,11 @@ endif
 set ffs=unix,dos,mac
 
 " Use large font by default in MacVim
-set gfn=Monaco:h19
+"set gfn=Monaco:h19
 
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 " }}}
 
