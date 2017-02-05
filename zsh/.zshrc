@@ -107,7 +107,7 @@ if [ -f "$HOME/.zshrc.post" ]; then
   source "$HOME/.zshrc.post"
 fi
 
-if [ "$TMUX" = "" ]; then
+if [ -z "${TMUX}${SSH_CLIENT}${SSH_TTY}" ]; then
     tmux -2;
 fi
 
