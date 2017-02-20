@@ -253,6 +253,7 @@ nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 
 " Show undo tree
 nmap <silent> <leader>u :MundoToggle<CR>
+let g:mundo_prefer_python3 = 1
 
 " Fuzzy find files
 nnoremap <silent> <Leader><space> :CtrlP<CR>

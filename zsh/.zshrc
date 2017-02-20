@@ -94,6 +94,7 @@ source $ZSH/oh-my-zsh.sh
 alias ls="ls -G --color=auto -F"
 alias stow="stow -v"
 alias mm="xmodmap ~/.xmodmap"
+alias ssh="TERM=xterm ssh"
 function git_root() {
     cd $(git rev-parse --show-toplevel)
 }
