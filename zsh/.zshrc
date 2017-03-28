@@ -109,6 +109,6 @@ if [ -f "$HOME/.zshrc.post" ]; then
 fi
 
 if [ -z "${TMUX}${SSH_CLIENT}${SSH_TTY}" ]; then
-    tmux -2;
+    tmux attach -t α || tmux -2 new -s α
 fi
 
