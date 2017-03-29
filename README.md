@@ -38,3 +38,7 @@
 
 This is a collection of dotfiles and scripts I use for customizing Linux & OS X to my liking and setting up the software development tools I use on a day-to-day basis. They should be cloned to your home directory so that the path is `~/dotfiles/`. These dotfiles are managed with [GNU Stow](http://www.gnu.org/software/stow/), a free, portable, lightweight symlink farm manager. Each folder except `misc/` under `~/dotfiles/` can be symlinked by stow. (e.g. `cd ~/dotfiles/ && stow vim`).
 
+
+## Screenshots
+
+![](./misc/screenshots/tmux-multi-pane.png)
