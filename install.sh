@@ -8,6 +8,8 @@ hash stow 2>/dev/null || {
     echo >&2 "GNU Stow is required to install dotfiles"; exit 1;
 }
 
+git submodule init && git submodule update
+
 # Do real job
 stow -v $(ls -d */ | grep -v misc)
 
