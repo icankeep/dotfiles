@@ -2,6 +2,7 @@ if [ -f "$HOME/.zshrc.pre" ]; then
   source "$HOME/.zshrc.pre"
 fi
 
+export EDITOR=vim
 export PATH="$HOME/.local/bin:$PATH"
 export DOTFILES_PATH=$(cd "$(dirname $(readlink -m ~/.zshrc))" && git rev-parse --show-toplevel)
 
