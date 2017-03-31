@@ -30,7 +30,7 @@ root: ~/Data/share
 windows:
   - Netatalk:
       panes:
-        - docker run -it --name netatalk --rm -e AFP_USER=public -e AFP_PASSWORD=public -v $PWD/public:/media/share -v $PWD/timemachine:/media/timemachine -p 548:548 cptactionhank/netatalk
+        - docker rm netatalk; docker run -it --name netatalk --rm -e AFP_USER=public -e AFP_PASSWORD=public -v $PWD/public:/media/share -v $PWD/timemachine:/media/timemachine -p 548:548 cptactionhank/netatalk
   - Samba:
       panes:
-        - docker run -it --name samba --rm -p 139:139 -p 445:445 -v $PWD/public:/public dperson/samba -s "public;/public;yes;no;yes;all;public;public" -u "public;public"
+        - docker rm samba; docker run -it --name samba --rm -p 139:139 -p 445:445 -v $PWD/public:/public dperson/samba -s "public;/public;yes;no;yes;all;public;public" -u "public;public"

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+docker rm haproxy
 docker run -it --rm --name haproxy \
     -p 1936:1936 \
     -p 443:443 \

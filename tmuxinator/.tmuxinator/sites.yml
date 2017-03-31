@@ -35,8 +35,8 @@ windows:
   - jupyter:
       root: ~/Public/notebooks
       panes:
-        - docker run -it --rm -v $PWD:/home/jovyan/work -p 8888:8888 qzchenwl/haskell-notebook
+        - docker rm jupyter; docker run -it --name jupyter --rm -v $PWD:/home/jovyan/work -p 8888:8888 qzchenwl/haskell-notebook
   - quickserve:
       root: ~/Public/share
       panes:
-        - docker run -it --rm -v $PWD:/share -p 8000:8000 qzchenwl/quickserve /share --upload /share
+        - docker rm quickserve; docker run -it --rm -v $PWD:/share -p 8000:8000 qzchenwl/quickserve /share --upload /share
