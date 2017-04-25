@@ -110,6 +110,11 @@ if [ -f "$HOME/.zshrc.post" ]; then
 fi
 
 if [ -z "${TMUX}${SSH_CLIENT}${SSH_TTY}" ]; then
-    tmux attach -t α || tmux -2 new -s α
+    sc=$(tmux ls -F '#{session_name}_#{session_attached}' | grep '^α_[0-9]\+$')
+    if [ "$sc" = "" ]; then
+        tmux -2 new -s α
+    elif [ "$sc" = "α_0" ]; then
+        tmux attach -t α
+    fi
 fi
 
