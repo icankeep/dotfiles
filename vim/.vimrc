@@ -107,6 +107,9 @@ Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'ternjs/tern_for_vim', { 'for': 'javascript', 'do': 'npm install' }
 
+" Python
+Plug 'davidhalter/jedi-vim', { 'for': 'python', 'do': 'pip install jedi' }
+
 call plug#end()
 
 " }}}
