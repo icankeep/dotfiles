@@ -290,12 +290,7 @@ set si "Smart indent
 set wrap "Wrap lines
 
 " Copy and paste to os clipboard
-nmap <leader>y "*y
-vmap <leader>y "*y
-nmap <leader>d "*d
-vmap <leader>d "*d
-nmap <leader>p "*p
-vmap <leader>p "*p
+set clipboard=unnamed
 
 " }}}
 
