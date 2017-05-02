@@ -110,6 +110,9 @@ Plug 'ternjs/tern_for_vim', { 'for': 'javascript', 'do': 'npm install' }
 " Python
 Plug 'davidhalter/jedi-vim', { 'for': 'python', 'do': 'pip install jedi' }
 
+" SQL
+Plug 'qzchenwl/q.vim', { 'for': 'sql' }
+
 call plug#end()
 
 " }}}
