@@ -83,7 +83,7 @@ Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Allow pane movement to jump out of vim into tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -112,7 +112,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python', 'do': 'pip install jedi' }
 
 " SQL
 Plug 'qzchenwl/q.vim', { 'for': 'sql' }
-
+Plug 'stardiviner/AutoSQLUpperCase.vim', { 'for': 'sql' }
 call plug#end()
 
 " }}}
