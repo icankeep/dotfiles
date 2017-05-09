@@ -112,7 +112,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python', 'do': 'pip install jedi' }
 
 " SQL
 Plug 'qzchenwl/q.vim', { 'for': 'sql' }
-
+Plug 'stardiviner/AutoSQLUpperCase.vim', { 'for': 'sql' }
 call plug#end()
 
 " }}}

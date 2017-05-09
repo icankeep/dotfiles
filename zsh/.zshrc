@@ -105,9 +105,8 @@ LIQUID_PROMPT="$DOTFILES_PATH/misc/shell/liquidprompt/"
 [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 [ -n "$PS1" ] && [ -s "$LIQUID_PROMPT/liquidprompt" ] && source "$LIQUID_PROMPT/liquidprompt"
 
-if [ -f "$HOME/.zshrc.post" ]; then
-  source "$HOME/.zshrc.post"
-fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zshrc.post ] && source ~/.zshrc.post
 
 if [ -z "${TMUX}${SSH_CLIENT}${SSH_TTY}" ]; then
     sc=$(tmux ls -F '#{session_name}_#{session_attached}' | grep '^α_[0-9]\+$')
