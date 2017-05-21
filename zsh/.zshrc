@@ -113,7 +113,7 @@ if [ -z "${TMUX}${SSH_CLIENT}${SSH_TTY}" ]; then
     if [ "$sc" = "" ]; then
         tmux -2 new -s α
     elif [ "$sc" = "α_0" ]; then
-        tmux attach -t α
+        tmux -2 attach -t α
     fi
 fi
 
