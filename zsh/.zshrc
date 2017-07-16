@@ -103,7 +103,7 @@ function git_root() {
 BASE16_SHELL="$DOTFILES_PATH/misc/shell/base16-shell/"
 LIQUID_PROMPT="$DOTFILES_PATH/misc/shell/liquidprompt/"
 [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-[ -n "$PS1" ] && [ -s "$LIQUID_PROMPT/liquidprompt" ] && source "$LIQUID_PROMPT/liquidprompt"
+#[ -n "$PS1" ] && [ -s "$LIQUID_PROMPT/liquidprompt" ] && source "$LIQUID_PROMPT/liquidprompt"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zshrc.post ] && source ~/.zshrc.post
