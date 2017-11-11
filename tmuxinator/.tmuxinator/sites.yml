@@ -35,8 +35,22 @@ windows:
   - jupyter:
       root: ~/Public/notebooks
       panes:
-        - docker rm jupyter; docker run -it --name jupyter --rm -v $PWD:/home/jovyan/work -p 8888:8888 qzchenwl/haskell-notebook
+        - docker rm jupyter; docker run -it --name jupyter --rm -v $PWD:/home/jovyan/work -v $PWD/.jupyter:/home/jovyan/.jupyter -p 8888:8888 qzchenwl/haskell-notebook
   - quickserve:
       root: ~/Public/share
       panes:
         - docker rm quickserve; docker run -it --rm -v $PWD:/share -p 8000:8000 qzchenwl/quickserve /share --upload /share
+  - tensorflow:
+      root: ~/Public/tensorflow-tutorial/models/tutorials/image/imagenet
+      panes:
+        - source ~/Public/tensorflow-tutorial/bin/activate && jupyter notebook --ip='*' --no-browser
+  - kcptun:
+      root: /tmp
+      panes:
+        - client_linux_amd64 -r "ss.chenwl.com:4431" -l ":4434" -mode fast2
+
+  - syncthing:
+      root: /tmp
+      panes:
+        - syncthing
+        - syncthing-inotify

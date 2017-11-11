@@ -1,7 +1,7 @@
 # ~/.tmuxinator/share.yml
 
 name: share
-root: ~/Data/share
+root: ~/Public/share
 
 # Optional tmux socket
 # socket_name: foo
