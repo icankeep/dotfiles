@@ -30,4 +30,4 @@ root: /tmp
 windows:
   - main:
     - docker rm aria2c-with-webui
-    - docker run -it --rm --name aria2c-with-webui -p 6800:6800 -p 6880:80 -p 6888:8080 -v $HOME/Downloads/aria2/downloads:/data -v $HOME/Downloads/aria2/conf:/conf -e SECRET=pass123word_aria2c xujinkai/aria2-with-webui
+    - docker run -it --rm --name aria2c-with-webui -p 6800:6800 -p 6880:80 -p 6888:8080 -v /data/raid10/aria2/downloads:/data -v /data/raid10/aria2/conf:/conf -e SECRET=pass123word_aria2c xujinkai/aria2-with-webui
