@@ -49,6 +49,11 @@ windows:
       panes:
         - client_linux_amd64 -r "ss.chenwl.com:4431" -l ":4434" -mode fast2
 
+  - mailserver:
+      root: ~/dotfiles/misc/services/sites/mailserver
+      panes:
+        - docker-compose up
+
 #  - syncthing:
 #      root: /tmp
 #      panes:

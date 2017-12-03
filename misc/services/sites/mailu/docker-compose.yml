@@ -1,0 +1,84 @@
+version: '2'
+
+services:
+
+  front:
+    image: mailu/nginx:$VERSION
+    env_file: .env
+    ports:
+      - "$BIND_ADDRESS4:180:80"
+
+      - "$BIND_ADDRESS4:143:143"
+      - "$BIND_ADDRESS4:993:993"
+
+      - "$BIND_ADDRESS4:25:25"
+      - "$BIND_ADDRESS4:587:587"
+    container_name: mailu_front
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - "$ROOT/redis:/data"
+
+  imap:
+    image: mailu/dovecot:$VERSION
+    env_file: .env
+    volumes:
+      - "$ROOT/data:/data"
+      - "$ROOT/mail:/mail"
+      - "$ROOT/overrides:/overrides"
+    depends_on:
+      - front
+
+  smtp:
+    image: mailu/postfix:$VERSION
+    env_file: .env
+    volumes:
+      - "$ROOT/data:/data"
+      - "$ROOT/overrides:/overrides"
+    depends_on:
+      - front
+
+  antispam:
+    image: mailu/rspamd:$VERSION
+    env_file: .env
+    volumes:
+      - "$ROOT/filter:/var/lib/rspamd"
+      - "$ROOT/dkim:/dkim"
+      - "$ROOT/overrides/rspamd:/etc/rspamd/override.d"
+    depends_on:
+      - front
+
+  antivirus:
+    image: mailu/$ANTIVIRUS:$VERSION
+    env_file: .env
+    volumes:
+      - "$ROOT/filter:/data"
+
+  webdav:
+    image: mailu/$WEBDAV:$VERSION
+    env_file: .env
+    volumes:
+      - "$ROOT/dav:/data"
+
+  admin:
+    image: mailu/admin:$VERSION
+    env_file: .env
+    volumes:
+      - "$ROOT/data:/data"
+      - "$ROOT/dkim:/dkim"
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    depends_on:
+      - redis
+
+  webmail:
+    image: "mailu/$WEBMAIL:$VERSION"
+    env_file: .env
+    volumes:
+      - "$ROOT/webmail:/data"
+
+  fetchmail:
+    image: mailu/fetchmail:$VERSION
+    env_file: .env
+    volumes:
+      - "$ROOT/data:/data"

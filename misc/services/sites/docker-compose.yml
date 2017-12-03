@@ -1,0 +1,56 @@
+version: '2'
+
+services:
+  haproxy:
+    image: haproxy
+    ports:
+      - "1936:1936"
+      - "443:443"
+      - "80:80"
+    volumes:
+      - "$LETSENCRYPT/live:/ssl:ro"
+      - "./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro"
+    networks:
+      - default
+      - mailu_default
+    links:
+      - quickserve:quickserve
+      - nextcloud-app:nextcloud
+      - aria2:aria2
+    external_links:
+      - mailu_front:mailu_front
+
+  nextcloud-app:
+    image: nextcloud:12.0
+    environment:
+      - "TZ=Asia/Shanghai"
+    links:
+      - nextcloud-db:db
+    volumes:
+      - "$ROOT/nextcloud/static-data:/var/www/html"
+
+  nextcloud-db:
+    image: mariadb
+    volumes:
+      - "$ROOT/nextcloud/mysql-data:/var/lib/mysql"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=123456"
+      - "MYSQL_PASSWORD=123456"
+      - "MYSQL_DATABASE=nextcloud"
+      - "MYSQL_USER=nextcloud"
+
+  quickserve:
+    image: qzchenwl/quickserve
+    volumes:
+      - "$SHARE:/share"
+    command: /share --upload /share
+
+  aria2:
+    image: xujinkai/aria2-with-webui
+    volumes:
+      - "$ROOT/aria2/downloads:/data"
+      - "$ROOT/aria2/conf:/conf"
+
+networks:
+  mailu_default:
+    external: true
