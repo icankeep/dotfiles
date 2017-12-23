@@ -9,10 +9,10 @@ services:
       - "$BIND_ADDRESS4:180:80"
 
       - "$BIND_ADDRESS4:143:143"
-      - "$BIND_ADDRESS4:993:993"
+      # - "$BIND_ADDRESS4:993:993"
 
       - "$BIND_ADDRESS4:25:25"
-      - "$BIND_ADDRESS4:587:587"
+      # - "$BIND_ADDRESS4:587:587"
     container_name: mailu_front
 
   redis:

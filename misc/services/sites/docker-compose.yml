@@ -17,8 +17,15 @@ services:
       - quickserve:quickserve
       - nextcloud-app:nextcloud
       - aria2:aria2
-    external_links:
-      - mailu_front:mailu_front
+      - onlyoffice:onlyoffice
+
+  onlyoffice:
+    image: onlyoffice/documentserver
+    volumes:
+      - "$ROOT/onlyoffice/DocumentServer/logs:/var/log/onlyoffice"
+      - "$ROOT/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data"
+      - "$ROOT/onlyoffice/DocumentServer/lib:/var/lib/onlyoffice"
+      - "$ROOT/onlyoffice/DocumentServer/db:/var/lib/postgresql"
 
   nextcloud-app:
     image: nextcloud:12.0
