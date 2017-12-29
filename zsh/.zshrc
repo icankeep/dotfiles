@@ -4,6 +4,8 @@ fi
 
 export EDITOR=vim
 export PATH="$HOME/.local/bin:$PATH"
+# added by Miniconda3 installer
+export PATH="/opt/conda/minconda3/bin:$PATH"
 export DOTFILES_PATH=$(cd "$(dirname $(readlink -m ~/.zshrc))" && git rev-parse --show-toplevel)
 
 export NVM_DIR=$(readlink -m "$HOME/.nvm")
