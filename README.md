@@ -10,8 +10,8 @@
 
   ▓▓▓▓▓▓▓▓▓▓
  ░▓ about  ▓ custom linux config files
- ░▓ author ▓ qzchenwl <qzchenwl@gmail.com>
- ░▓ code   ▓ https://github.com/qzchenwl/dotfiles
+ ░▓ author ▓ passer <whzhoua@gmail.com>
+ ░▓ code   ▓ https://github.com/icankeep/dotfiles
  ░▓ base   ▓ https://github.com/xero/dotfiles
  ░▓▓▓▓▓▓▓▓▓▓
  ░░░░░░░░░░
