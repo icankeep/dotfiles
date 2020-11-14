@@ -1,0 +1,16 @@
+#!/bin/bash
+
+EMAIL=$(git config user.email)
+
+default_remote=$(git config open.default.remote)
+remote=${default_remote:-"origin"}
+git_url=$(git ls-remote --get-url "$remote")
+
+if [[ "$git_url" =~ github.com ]] || [[ "$git_url" =~ gitee.com ]]; then
+  if [ "$EMAIL" != "whzhoua@gmail.com" ]; then
+    echo "auto config user.name and user.email"
+    git config user.email "whzhoua@gmail.com"
+    git config user.name "passer"
+  fi
+fi
+
