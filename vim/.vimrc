@@ -491,8 +491,6 @@ set csverb
 
 " Git {{{
 
-set diffopt+=vertical
-
 let g:extradite_width = 60
 " Hide messy Ggrep output and copen automatically
 function! NonintrusiveGitGrep(term)

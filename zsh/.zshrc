@@ -128,6 +128,8 @@ export UPDATE_ZSH_DAYS=1
 # custom
 # 环境变量
 export PATH=~/conda/bin:$PATH
+export PATH=~/work/bin:$PATH
+export PATH=~/.local/bin:$PATH
 
 # 别名
 alias py='python'
