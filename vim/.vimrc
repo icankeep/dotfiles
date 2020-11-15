@@ -1,548 +1,293 @@
-" Origin: https://github.com/begriffs/haskell-vim-now/blob/master/.vimrc
+" 设置包括 vundle 和初始化相关的 runtimepath
+set rtp+=~/.vim/bundle/Vundle.vim
+filetype off
+syntax on
+"关闭vi兼容模式"
+set nocompatible
 
-" General {{{
-" Use indentation for folds
-set foldmethod=indent
-set foldnestmax=5
-set foldlevelstart=99
-set foldcolumn=0
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 
-augroup vimrcFold
-  " fold vimrc itself by categories
-  autocmd!
-  autocmd FileType vim set foldmethod=marker
-  autocmd FileType vim set foldlevel=0
-augroup END
+" 所有插件需要在下面这行之前配置
+call vundle#end()            " 必须
+filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
 
-" Sets how many lines of history VIM has to remember
+
+"设置历史记录步数"
 set history=700
 
-" Set to auto read when a file is changed from the outside
+"开启相关插件"
+"侦测文件类型"
+filetype on
+"载入文件类型插件"
+filetype plugin on
+"为特定文件类型载入相关缩进文件"
+filetype indent on
+
+"当文件在外部被修改时，自动更新该文件"
 set autoread
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-if ! exists("mapleader")
-  let mapleader = ","
-endif
-
-if ! exists("g:mapleader")
-  let g:mapleader = ","
-endif
-
-" Leader key timeout
-set tm=2000
-
-" Allow the normal use of "," by pressing it twice
-noremap ,, ,
-
-" Use par for prettier line formatting
-set formatprg=par
-let $PARINIT = 'rTbgqR B=.,?_A_a Q=_s>|'
-
-" Kill the damned Ex mode.
-nnoremap Q <nop>
-
-" Make <c-h> work like <c-h> again (this is a problem with libterm)
-if has('nvim')
-  nnoremap <BS> <C-w>h
-endif
-
-" }}}
-
-" vim-plug {{{
-
-call plug#begin('~/.vim/bundle')
-
-" Support bundles
-Plug 'jgdavey/tslime.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'ervandew/supertab'
-Plug 'benekastah/neomake'
-Plug 'moll/vim-bbye'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'vim-scripts/gitignore'
-Plug 'rking/ag.vim'
-
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'int3/vim-extradite'
-
-" Bars, panels, and files
-Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'majutsushi/tagbar'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-" Text manipulation
-Plug 'vim-scripts/Align'
-Plug 'simnalamburt/vim-mundo'
-Plug 'tpope/vim-commentary'
-Plug 'godlygeek/tabular'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'easymotion/vim-easymotion'
-Plug 'ConradIrwin/vim-bracketed-paste'
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" Allow pane movement to jump out of vim into tmux
-Plug 'christoomey/vim-tmux-navigator'
-
-" Colorscheme
-Plug 'chriskempson/base16-vim'
-
-" For Programming Languages
-Plug 'vim-syntastic/syntastic'
-Plug 'sheerun/vim-polyglot'
-
-" Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
-Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
-
-" Javascript
-Plug 'flowtype/vim-flow', { 'for': 'javascript' }
-Plug 'moll/vim-node', { 'for': 'javascript' }
-Plug 'ternjs/tern_for_vim', { 'for': 'javascript', 'do': 'npm install' }
-
-" Python
-Plug 'davidhalter/jedi-vim', { 'for': 'python', 'do': 'pip install jedi' }
-
-" SQL
-Plug 'qzchenwl/q.vim', { 'for': 'sql' }
-Plug 'stardiviner/AutoSQLUpperCase.vim', { 'for': 'sql' }
-call plug#end()
-
-" }}}
-
-" VIM user interface {{{
-
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
-
-" Turn on the WiLd menu
-set wildmenu
-" Tab-complete files up to longest unambiguous prefix
-set wildmode=list:longest,full
-
-" Always show current position
-set ruler
-set number
-
-" Show trailing whitespace
-set list
-" But only interesting whitespace
-if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-endif
-
-" Height of the command bar
-set cmdheight=1
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
-" For regular expressions turn magic on
-set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
-
-" No annoying sound on errors
-set noerrorbells
-set vb t_vb=
-
-if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
-endif
-
-" Force redraw
-map <silent> <leader>r :redraw!<CR>
-
-" Turn mouse mode on
-nnoremap <leader>ma :set mouse=a<cr>
-
-" Turn mouse mode off
-nnoremap <leader>mo :set mouse=<cr>
-
-" Default to mouse mode on
+"激活鼠标的使用"
 set mouse=a
-" }}}
+set selection=exclusive
+set selectmode=mouse,key
 
-" Colors and Fonts {{{
+"保存全局变量"
+set viminfo+=!
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+"带有如下符号的单词不要被换行分割"
+set iskeyword+=_,$,@,%,#,-
 
-" Adjust signscolumn to match wombat
-hi! link SignColumn LineNr
+"通过使用: commands命令，告诉我们文件的哪一行被改变过"
+set report=0
 
-" Use pleasant but very visible search hilighting
-hi Search ctermfg=white ctermbg=173 cterm=none guifg=#ffffff guibg=#e5786d gui=none
-hi! link Visual Search
+"被分割的窗口间显示空白，便于阅读"
+set fillchars=vert:\ ,stl:\ ,stlnc:\
 
-" Match wombat colors in nerd tree
-hi Directory guifg=#8ac6f2
+"""""""""""""""""""""""""""""""""
+"""=>字体和颜色<="""
+"""""""""""""""""""""""""""""""""
+"自动开启语法高亮"
+syntax enable
 
-" Searing red very visible cursor
-hi Cursor guibg=red
+"设置字体"
+"set guifont=dejaVu\ Sans\ MONO\ 10
+set guifont=Courier_New:h10:cANSI
 
-" Don't blink normal mode cursor
-set guicursor=n-v-c:block-Cursor
-set guicursor+=n-v-c:blinkon0
+"设置颜色"
+"colorscheme desert
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-  set guifont=Fira\ Mono\ 11
-  set guioptions-=m
-  set guioptions-=r
-  set guioptions-=L
-  set guioptions-=T
-  set guioptions-=e
-  set guitablabel=%M\ %t
-endif
-set t_Co=256
+"高亮显示当前行"
+"set cursorline
+"hi cursorline guibg=#00ff00
+"hi CursorColumn guibg=#00ff00
 
-" Set utf8 as standard encoding and en_US as the standard language
-if !has('nvim')
-  " Only set this for vim, since neovim is utf8 as default and setting it
-  " causes problems when reloading the .vimrc configuration
-  set encoding=utf8
-endif
+"高亮显示普通txt文件（需要txt.vim脚本）"
+au BufRead,BufNewFile *  setfiletype txt
 
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
+"""""""""""""""""""""""""""""""
+"""=>代码折叠功能<="""
+"""""""""""""""""""""""""""""""
+"激活折叠功能"
+set foldenable
+"set nofen（这个是关闭折叠功能）"
 
-" Use large font by default in MacVim
-"set gfn=Monaco:h19
+"设置按照语法方式折叠（可简写set fdm=XX）"
+"有6种折叠方法：
+"manual   手工定义折叠"
+"indent   更多的缩进表示更高级别的折叠"
+"expr     用表达式来定义折叠"
+"syntax   用语法高亮来定义折叠"
+"diff     对没有更改的文本进行折叠"
+"marker   对文中的标志进行折叠"
+set foldmethod=manual
+"set fdl=0（这个是不选用任何折叠方法）"
 
-let g:airline_theme='bubblegum'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 0
+"设置折叠区域的宽度"
+"如果不为0，则在屏幕左侧显示一个折叠标识列
+"分别用“-”和“+”来表示打开和关闭的折叠
+set foldcolumn=0
 
-" }}}
+"设置折叠层数为3"
+setlocal foldlevel=3
 
-" Files, backups and undo {{{
+"设置为自动关闭折叠"
+set foldclose=all
 
-" Turn backup off, since most stuff is in Git anyway...
-set nobackup
-set nowb
-set noswapfile
+"用空格键来代替zo和zc快捷键实现开关折叠"
+"zo O-pen a fold (打开折叠)
+"zc C-lose a fold (关闭折叠)
+"zf F-old creation (创建折叠)
+"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
-" Open file prompt with current path
-nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-
-" Show undo tree
-nmap <silent> <leader>u :MundoToggle<CR>
-let g:mundo_prefer_python3 = 1
-
-" Fuzzy find files
-"nnoremap <silent> <Leader><space> :CtrlP<CR>
-nnoremap <silent> <Leader><space> :Files<CR>
-let g:ctrlp_max_files=0
-let g:ctrlp_show_hidden=1
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
-
-" Force saving files that require root permission
-cnoremap w!! w !sudo tee > /dev/null %
-
-" }}}
-
-" Text, tab and indent related {{{
-
-" Use spaces instead of tabs
+"""""""""""""""""""""""""""""""""""
+"""=>文字处理<="""
+"""""""""""""""""""""""""""""""""""
+"使用空格来替换Tab"
 set expandtab
 
-" Be smart when using tabs ;)
+"设置所有的Tab和缩进为2个空格"
+set tabstop=2
+
+"设定<<和>>命令移动时的宽度为2"
+set shiftwidth=2
+
+"使得按退格键时可以一次删除2个空格"
+set softtabstop=2
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+"缩进，自动缩进（继承前一行的缩进）"
+"set autoindent 命令打开自动缩进，是下面配置的缩写
+"可使用autoindent命令的简写，即“:set ai”和“:set noai”
+"还可以使用“:set ai sw=4”在一个命令中打开缩进并设置缩进级别
+set ai
+set cindent
 
-" Linebreak on 500 characters
-set lbr
-set tw=500
+"智能缩进"
+set si
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+"自动换行”
+set wrap
 
-" Copy and paste to os clipboard
-set clipboard=unnamed
+"设置软宽度"
+set sw=4
 
-" }}}
+"行内替换"
+set gdefault
 
-" Visual mode related {{{
+""""""""""""""""""""""""""""""""""
+"""=>Vim 界面<="""
+""""""""""""""""""""""""""""""""""
+"增强模式中的命令行自动完成操作"
+set wildmenu
 
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
+"显示标尺"
+set ruler
 
-" }}}
+"设置命令行的高度"
+set cmdheight=1
 
-" Moving around, tabs, windows and buffers {{{
+"显示行数"
+set nu
 
-" Treat long lines as break lines (useful when moving around in them)
-nnoremap j gj
-nnoremap k gk
+"不要图形按钮"
+set go=
 
-noremap <c-h> <c-w>h
-noremap <c-k> <c-w>k
-noremap <c-j> <c-w>j
-noremap <c-l> <c-w>l
+"在执行宏命令时，不进行显示重绘；在宏命令执行完成后，一次性重绘，以便提高性能"
+set lz
 
-" Disable highlight when <leader><cr> is pressed
-" but preserve cursor coloring
-nmap <silent> <leader><cr> :noh\|hi Cursor guibg=red<cr>
+"使回格键（backspace）正常处理indent, eol, start等"
+set backspace=eol,start,indent
 
-" Return to last edit position when opening files (You want this!)
-augroup last_edit
-  autocmd!
-  autocmd BufReadPost *
-       \ if line("'\"") > 0 && line("'\"") <= line("$") |
-       \   exe "normal! g`\"" |
-       \ endif
-augroup END
-" Remember info about open buffers on close
-set viminfo^=%
+"允许空格键和光标键跨越行边界"
+set whichwrap+=<,>,h,l
 
-" Open window splits in various places
-nmap <leader>sh :leftabove  vnew<CR>
-nmap <leader>sl :rightbelow vnew<CR>
-nmap <leader>sk :leftabove  new<CR>
-nmap <leader>sj :rightbelow new<CR>
+"设置魔术"
+set magic
 
-" Manually create key mappings (to avoid rebinding C-\)
-let g:tmux_navigator_no_mappings = 1
+"关闭遇到错误时的声音提示"
+"关闭错误信息响铃"
+set noerrorbells
 
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+"关闭使用可视响铃代替呼叫"
+set novisualbell
 
-" don't close buffers when you aren't displaying them
-set hidden
+"高亮显示匹配的括号([{和}])"
+set showmatch
 
-" previous buffer, next buffer
-nnoremap <leader>bp :bp<cr>
-nnoremap <leader>bn :bn<cr>
+"匹配括号高亮的时间（单位是十分之一秒）"
+set mat=2
 
-" close every window in current tabview but the current
-nnoremap <leader>bo <c-w>o
+"光标移动到buffer的顶部和底部时保持3行距离"
+set scrolloff=3
 
-" delete buffer without closing pane
-noremap <leader>bd :Bd<cr>
+"搜索逐字符高亮"
+set hlsearch
+set incsearch
 
-" fuzzy find buffers
-noremap <leader>b<space> :CtrlPBuffer<cr>
+"搜索时不区分大小写"
+"还可以使用简写（“:set ic”和“:set noic”）"
+set ignorecase
 
-" Neovim terminal configurations
-if has('nvim')
-  " Use <Esc> to escape terminal insert mode
-  tnoremap <Esc> <C-\><C-n>
-  " Make terminal split moving behave like normal neovim
-  tnoremap <c-h> <C-\><C-n><C-w>h
-  tnoremap <c-j> <C-\><C-n><C-w>j
-  tnoremap <c-k> <C-\><C-n><C-w>k
-  tnoremap <c-l> <C-\><C-n><C-w>l
+"用浅色高亮显示当前行"
+autocmd InsertLeave * se nocul
+autocmd InsertEnter * se cul
+
+"输入的命令显示出来，看的清楚"
+set showcmd
+
+""""""""""""""""""""""""""""""""""""
+"""=>编码设置<="""
+""""""""""""""""""""""""""""""""""""
+"设置编码"
+set encoding=utf-8
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+
+"设置文件编码"
+set fileencodings=utf-8
+
+"设置终端编码"
+set termencoding=utf-8
+
+"设置语言编码"
+set langmenu=zh_CN.UTF-8
+set helplang=cn
+
+"""""""""""""""""""""""""""""
+"""=>其他设置<="""
+"""""""""""""""""""""""""""""
+"开启新行时使用智能自动缩进"
+set smartindent
+set cin
+set showmatch
+
+"在处理未保存或只读文件的时候，弹出确认"
+set confirm
+
+"隐藏工具栏"
+set guioptions-=T
+
+"隐藏菜单栏"
+set guioptions-=m
+
+"置空错误铃声的终端代码"
+set vb t_vb=
+
+"显示状态栏（默认值为1，表示无法显示状态栏）"
+set laststatus=1
+
+"粘贴不换行问题的解决方法"
+set pastetoggle=<F9>
+
+"设置背景颜色"
+set background=dark
+
+"文件类型自动检测，代码智能补全"
+set completeopt=longest,preview,menu
+
+"共享剪切板"
+set clipboard+=unnamed
+
+"从不备份"
+set nobackup
+set noswapfile
+
+"自动保存"
+set autowrite
+
+"显示中文帮助"
+if version >= 603
+  set helplang=cn
+  set encoding=utf-8
 endif
 
-" }}}
+"设置高亮相关项"
+highlight Search ctermbg=black ctermfg=white guifg=white guibg=black
 
-" Status line {{{
+"=============新建.c,.h,.sh,.java文件，自动插入文件头
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()"
+""定义函数SetTitle，自动插入文件头
+func SetTitle()
+    "如果文件类型为.sh文件
+    if &filetype == 'sh'
+        call setline(1,"\############################")
+        call append(line("."), "\# File Name: ".expand("%"))
+        call append(line(".")+1, "\# Author: passer")
+        call append(line(".")+2, "\# Mail: whzhoua@gmail.com")
+        call append(line(".")+3, "\# Created Time: ".strftime("%Y-%m-%d %H:%M:%S"))
+        call append(line(".")+4, "\############################")
+        call append(line(".")+5, "\#!/bin/bash")
+        call append(line(".")+6, "")
+    else
+        call setline(1, "/******************************")
+        call append(line("."), "  > File Name: ".expand("%"))
+        call append(line(".")+1, "  > Author: passer")
+        call append(line(".")+2, "  > Mail: whzhoua@gmail.com")
+        call append(line(".")+3, "  > Created Time: ".strftime("%Y-%m-%d %H:%M:%S"))
+        call append(line(".")+4, " *****************************/")
+        call append(line(".")+5, "")
+    endif
 
-" Always show the status line
-set laststatus=2
-
-" }}}
-
-" Editing mappings {{{
-
-" Utility function to delete trailing white space
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+    "新建文件后，自动定位到文件末尾
+    autocmd BufNewFile * normal G
 endfunc
-
-" }}}
-
-" Spell checking {{{
-
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" }}}
-
-" Helper functions {{{
-
-function! CmdLine(str)
-  exe "menu Foo.Bar :" . a:str
-  emenu Foo.Bar
-  unmenu Foo
-endfunction
-
-function! VisualSelection(direction, extra_filter) range
-  let l:saved_reg = @"
-  execute "normal! vgvy"
-
-  let l:pattern = escape(@", '\\/.*$^~[]')
-  let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-  if a:direction == 'b'
-    execute "normal ?" . l:pattern . "^M"
-  elseif a:direction == 'gv'
-    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.' . a:extra_filter)
-  elseif a:direction == 'replace'
-    call CmdLine("%s" . '/'. l:pattern . '/')
-  elseif a:direction == 'f'
-    execute "normal /" . l:pattern . "^M"
-  endif
-
-  let @/ = l:pattern
-  let @" = l:saved_reg
-endfunction
-
-" }}}
-
-" Slime {{{
-
-vmap <silent> <Leader>rs <Plug>SendSelectionToTmux
-nmap <silent> <Leader>rs <Plug>NormalModeSendToTmux
-nmap <silent> <Leader>rv <Plug>SetTmuxVars
-
-" }}}
-
-" NERDTree {{{
-
-" Close nerdtree after a file is selected
-let NERDTreeQuitOnOpen = 1
-
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-function! ToggleFindNerd()
-  if IsNERDTreeOpen()
-    exec ':NERDTreeToggle'
-  else
-    exec ':NERDTreeFind'
-  endif
-endfunction
-
-" If nerd tree is closed, find current file, if open, close it
-nmap <silent> <leader>f <ESC>:call ToggleFindNerd()<CR>
-nmap <silent> <leader>F <ESC>:NERDTreeToggle<CR>
-
-" }}}
-
-" Alignment {{{
-
-" Stop Align plugin from forcing its mappings on us
-let g:loaded_AlignMapsPlugin=1
-" Align on equal signs
-map <Leader>a= :Align =<CR>
-" Align on commas
-map <Leader>a, :Align ,<CR>
-" Align on pipes
-map <Leader>a<bar> :Align <bar><CR>
-" Prompt for align character
-map <leader>ap :Align
-" }}}
-
-" Tags {{{
-
-map <leader>tt :TagbarToggle<CR>
-
-set tags=tags;/
-set cst
-set csverb
-
-" }}}
-
-" Git {{{
-
-let g:extradite_width = 60
-" Hide messy Ggrep output and copen automatically
-function! NonintrusiveGitGrep(term)
-  execute "copen"
-  " Map 't' to open selected item in new tab
-  execute "nnoremap <silent> <buffer> t <C-W><CR><C-W>T"
-  execute "silent! Ggrep " . a:term
-  execute "redraw!"
-endfunction
-
-command! -nargs=1 GGrep call NonintrusiveGitGrep(<q-args>)
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gg :copen<CR>:GGrep 
-nmap <leader>gl :Extradite!<CR>
-nmap <leader>gd :Gdiff<CR>
-nmap <leader>gb :Gblame<CR>
-
-function! CommittedFiles()
-  " Clear quickfix list
-  let qf_list = []
-  " Find files committed in HEAD
-  let git_output = system("git diff-tree --no-commit-id --name-only -r HEAD\n")
-  for committed_file in split(git_output, "\n")
-    let qf_item = {'filename': committed_file}
-    call add(qf_list, qf_item)
-  endfor
-  " Fill quickfix list with them
-  call setqflist(qf_list)
-endfunction
-
-" Show list of last-committed files
-nnoremap <silent> <leader>g? :call CommittedFiles()<CR>:copen<CR>
-
-" }}}
-
-" Completion {{{
-set completeopt+=longest
-
-" Use buffer words as default tab completion
-let g:SuperTabDefaultCompletionType = '<c-x><c-p>'
-
-" }}}
-
-" Per-Project vim settings {{{
-if filereadable('.vimrc.local')
-  source .vimrc.local
-endif
-" }}}
-
-" Per-Language settings {{{
-augroup langRC
-  autocmd FileType javascript source ~/.vim/rc.d/javascript.vimrc
-  autocmd FileType haskell    source ~/.vim/rc.d/haskell.vimrc
-augroup END
-" }}}

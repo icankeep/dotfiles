@@ -88,6 +88,7 @@ plugins=(
   zsh-syntax-highlighting
   gitignore
   git-open
+  emoji
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -123,7 +124,7 @@ source $ZSH/oh-my-zsh.sh
 #
 
 # 自动更新的时间间隔，单位是天，这里设置 30 天更新一次
-export UPDATE_ZSH_DAYS=1
+export UPDATE_ZSH_DAYS=30
 
 # custom
 # 环境变量

@@ -17,3 +17,6 @@
 [submodule "misc/tmux/plugins/tpm"]
 	path = misc/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "vim/.vim/bundle/Vundle.vim"]
+	path = vim/.vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
