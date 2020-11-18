@@ -127,6 +127,9 @@ source $ZSH/oh-my-zsh.sh
 export UPDATE_ZSH_DAYS=30
 
 # custom
+# 自定义脚本
+source ~/work/.workrc
+
 # 环境变量
 export PATH=~/conda/bin:$PATH
 export PATH=~/work/bin:$PATH
@@ -138,3 +141,4 @@ alias history='fc -il 1'
 alias sa='source ~/conda/bin/activate'
 alias go='git-open'
 alias git-user='git config user.name "passer" && git config user.email "whzhoua@gmail.com"'
+

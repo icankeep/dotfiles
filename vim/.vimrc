@@ -237,6 +237,7 @@ set vb t_vb=
 set laststatus=1
 
 "粘贴不换行问题的解决方法"
+set paste
 set pastetoggle=<F9>
 
 "设置背景颜色"
