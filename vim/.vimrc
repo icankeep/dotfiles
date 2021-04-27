@@ -292,3 +292,8 @@ func SetTitle()
     "新建文件后，自动定位到文件末尾
     autocmd BufNewFile * normal G
 endfunc
+
+
+set mouse=a
+set paste
+hi Search term=standout ctermfg=0 ctermbg=3

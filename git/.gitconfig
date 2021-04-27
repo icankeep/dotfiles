@@ -5,6 +5,7 @@
 [core]
 	pager = less -F -X -R
 	editor = /usr/bin/vim
+	autocrlf = input
 [alias]
 	s = status -sb
 [merge]
