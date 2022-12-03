@@ -131,9 +131,17 @@ export UPDATE_ZSH_DAYS=30
 source ~/work/.workrc
 
 # 环境变量
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
 export PATH=~/conda/bin:$PATH
 export PATH=~/work/bin:$PATH
 export PATH=~/.local/bin:$PATH
+export PATH=~/software/sbt/bin:$PATH
+export PATH=~/nodejs/npm/bin:$PATH
+export PATH=/Applications/IntelliJ\ IDEA.app/Contents/plugins/maven/lib/maven3/bin:$PATH
+export SBT_OPTS="-Dsbt.override.build.repos=true"
+# https://www.cnblogs.com/StivenYang/p/12546605.html
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
 # 别名
 alias py='python'
@@ -141,4 +149,10 @@ alias history='fc -il 1'
 alias sa='source ~/conda/bin/activate'
 alias go='git-open'
 alias git-user='git config user.name "passer" && git config user.email "whzhoua@gmail.com"'
+alias pip=pip3
 
+#sa python3.6.7
+
+export PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
+
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles

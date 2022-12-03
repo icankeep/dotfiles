@@ -5,6 +5,7 @@
 [core]
 	pager = less -F -X -R
 	editor = /usr/bin/vim
+	autocrlf = input
 [alias]
 	s = status -sb
 [merge]
@@ -15,3 +16,6 @@
 	keepBackup = false
 [gc]
 	autoDetach = false
+[user]
+	email = whzhoua@gmail.com
+	name = passer
