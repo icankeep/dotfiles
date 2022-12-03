@@ -139,9 +139,11 @@ export PATH=~/.local/bin:$PATH
 export PATH=~/software/sbt/bin:$PATH
 export PATH=~/nodejs/npm/bin:$PATH
 export PATH=/Applications/IntelliJ\ IDEA.app/Contents/plugins/maven/lib/maven3/bin:$PATH
+export PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
 export SBT_OPTS="-Dsbt.override.build.repos=true"
 # https://www.cnblogs.com/StivenYang/p/12546605.html
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 
 # 别名
 alias py='python'
@@ -153,6 +155,3 @@ alias pip=pip3
 
 #sa python3.6.7
 
-export PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
-
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
