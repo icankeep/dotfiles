@@ -132,6 +132,7 @@ source ~/work/.workrc
 
 # 环境变量
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home
+export JAVA_HOME=/Users/passer/software/jdk11
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=~/conda/bin:$PATH
 export PATH=~/work/bin:$PATH
