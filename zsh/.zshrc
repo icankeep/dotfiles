@@ -146,13 +146,25 @@ export SBT_OPTS="-Dsbt.override.build.repos=true"
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 
+# IDE 
+export PATH=/Applications/GoLand.app/Contents/MacOS:$PATH
+export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS":$PATH
+export PATH=/Applications/PyCharm.app/Contents/MacOS:$PATH
+
 # 别名
 alias py='python'
 alias history='fc -il 1'
 alias sa='source ~/conda/bin/activate'
-alias go='git-open'
 alias git-user='git config user.name "passer" && git config user.email "whzhoua@gmail.com"'
 alias pip=pip3
+alias gp='git push origin $(git rev-parse --abbrev-ref HEAD)'
+alias bm=bytebm
+alias jwt='cloud-jwt --copy'
+alias gm='git commit -am '
+alias gpu='git push u $(git rev-parse --abbrev-ref HEAD)'
+alias gcam='git commit -am '
+alias gc='git checkout '
+alias gcb='git checkout -b '
 
 #sa python3.6.7
 
